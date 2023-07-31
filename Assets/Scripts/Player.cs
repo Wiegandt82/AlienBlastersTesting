@@ -8,13 +8,16 @@ public class Player : MonoBehaviour
     [SerializeField] float _jumpDuration = 0.5f;
     [SerializeField] float _jumpVelocity = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnDrawGizmos()
     {
-        
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        float bottomY = spriteRenderer.bounds.extents.y;
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - bottomY);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(origin, origin + Vector2.down * 0.1f);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         var horizontal = Input.GetAxis("Horizontal");

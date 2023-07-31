@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 694689388}
   - component: {fileID: 694689392}
   m_Layer: 0
-  m_Name: alienBlue_front
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694689387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -503,6 +503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb46b5f628dc40846a5ce6c1b475863f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpDuration: 0.5
+  _jumpVelocity: 5
+  IsGrounded: 0
 --- !u!1 &1476956845
 GameObject:
   m_ObjectHideFlags: 0

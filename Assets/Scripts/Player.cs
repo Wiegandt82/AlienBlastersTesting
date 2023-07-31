@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     float _jumpEndTime;
+    [SerializeField] float _jumpDuration = 0.5f;
+    [SerializeField] float _jumpVelocity = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +24,10 @@ public class Player : MonoBehaviour
         var vertical = rb.velocity.y;
 
         if (Input.GetButtonDown("Fire1"))
-            _jumpEndTime = Time.time + 0.5f;
+            _jumpEndTime = Time.time + _jumpDuration;
 
             if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
-            vertical = 5; 
+            vertical = _jumpVelocity; 
 
         rb.velocity = new Vector2(horizontal, vertical);
     }

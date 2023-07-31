@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float _jumpEndTime;
+    [SerializeField] float _horizontalVelocity = 8f;
     [SerializeField] float _jumpDuration = 0.5f;
     [SerializeField] float _jumpVelocity = 5;
+
     public bool IsGrounded;
+
+    float _jumpEndTime;
 
     void OnDrawGizmos()
     {
@@ -16,7 +19,6 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(origin, origin + Vector2.down * 0.1f);
     }
-
 
     void Update()
     {
@@ -39,7 +41,9 @@ public class Player : MonoBehaviour
             _jumpEndTime = Time.time + _jumpDuration;
 
             if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
-            vertical = _jumpVelocity; 
+            vertical = _jumpVelocity;
+
+        horizontal *= _horizontalVelocity;
 
         rb.velocity = new Vector2(horizontal, vertical);
     }

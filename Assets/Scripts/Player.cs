@@ -45,13 +45,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
-        var hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _layerMask);
-
-        if (hit.collider) 
-            IsGrounded = true;
-        else
-            IsGrounded = false;
+        UpdateGrounding();
 
         _horizontal = Input.GetAxis("Horizontal");
         Debug.Log(_horizontal);
@@ -62,7 +56,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && IsGrounded)
             _jumpEndTime = Time.time + _jumpDuration;
 
-            if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
+        if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
             vertical = _jumpVelocity;
 
         _horizontal *= _horizontalVelocity;
@@ -70,6 +64,32 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(_horizontal, vertical);
 
         UpdateSprite();
+    }
+
+    void UpdateGrounding()
+    {
+        IsGrounded = false;
+
+        //Check center
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _layerMask);
+        if (hit.collider)
+            IsGrounded = true;
+
+        //Check left
+        origin = new Vector2(transform.position.x - _footOffset, transform.position.y - _spriteRenderer.bounds.extents.y);
+        hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _layerMask);
+        if (hit.collider)
+            IsGrounded = true;
+
+        //Check right
+        origin = new Vector2(transform.position.x + _footOffset, transform.position.y - _spriteRenderer.bounds.extents.y);
+        hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _layerMask);
+        if (hit.collider)
+            IsGrounded = true;
+
+
+
     }
 
     void UpdateSprite()

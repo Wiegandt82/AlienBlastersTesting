@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         {
             _jumpEndTime = Time.time + _jumpDuration;
             _jumpsRemaining--;
+            GetComponent<AudioSource>().Play();
         }
 
         if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
@@ -93,7 +94,6 @@ public class Player : MonoBehaviour
 
         if (IsGrounded && GetComponent<Rigidbody2D>().velocity.y <= 0)
             _jumpsRemaining = 2;
-
     }
 
     void UpdateSprite()

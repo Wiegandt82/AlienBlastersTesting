@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _jumpDuration = 0.5f;
     [SerializeField] float _jumpVelocity = 5;
     [SerializeField] Sprite _jumpSprite;
+    [SerializeField] LayerMask _layerMask;
 
     public bool IsGrounded;
 
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector2 origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
-        var hit = Physics2D.Raycast(origin, Vector2.down, 0.1f);
+        var hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _layerMask);
 
         if (hit.collider) 
             IsGrounded = true;

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     float _jumpEndTime;
     SpriteRenderer _spriteRenderer;
     Animator _animator;
+    AudioSource _audioSource;
     float _horizontal;
     int _jumpsRemaining;
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>(); 
     }
 
     void OnDrawGizmos()
@@ -57,7 +59,7 @@ public class Player : MonoBehaviour
         {
             _jumpEndTime = Time.time + _jumpDuration;
             _jumpsRemaining--;
-            GetComponent<AudioSource>().Play();
+            _audioSource.Play();
         }
 
         if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)

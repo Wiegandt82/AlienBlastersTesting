@@ -62,12 +62,10 @@ public class Player : MonoBehaviour
 
     void UpdateSprite()
     {
-        if(IsGrounded)
-            _spriteRenderer.sprite = _defaultSprite;
-        else
-            _spriteRenderer.sprite = _jumpSprite;
+        GetComponent<Animator>().SetBool("IsGrounded", IsGrounded);
+        GetComponent<Animator>().SetFloat("HorizontalSpeed", Math.Abs(_horizontal));
 
-        if(_horizontal > 0)
+        if (_horizontal > 0)
             _spriteRenderer.flipX = false;
         else if (_horizontal < 0)
             _spriteRenderer.flipX = true;

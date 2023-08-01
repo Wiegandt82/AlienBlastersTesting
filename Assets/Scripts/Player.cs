@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
     float _jumpEndTime;
     SpriteRenderer _spriteRenderer;
     Sprite _defaultSprite;
+    Animator _animator;
     float _horizontal;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _defaultSprite = _spriteRenderer.sprite;
+        _animator = GetComponent<Animator>();
     }
 
     void OnDrawGizmos()
@@ -62,8 +64,8 @@ public class Player : MonoBehaviour
 
     void UpdateSprite()
     {
-        GetComponent<Animator>().SetBool("IsGrounded", IsGrounded);
-        GetComponent<Animator>().SetFloat("HorizontalSpeed", Math.Abs(_horizontal));
+        _animator.SetBool("IsGrounded", IsGrounded);
+        _animator.SetFloat("HorizontalSpeed", Math.Abs(_horizontal));
 
         if (_horizontal > 0)
             _spriteRenderer.flipX = false;

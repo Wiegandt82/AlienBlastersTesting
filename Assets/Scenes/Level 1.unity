@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 68993322}
   - component: {fileID: 68993321}
   - component: {fileID: 68993320}
+  - component: {fileID: 68993323}
   m_Layer: 0
   m_Name: spring
   m_TagString: Untagged
@@ -253,6 +254,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &68993323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68993319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e9e8e3d56810c4eb7fb2c5b30e4e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprung: {fileID: 21300000, guid: eb523418a5dc4b4409293cded9c43928, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +503,7 @@ GameObject:
   - component: {fileID: 694689394}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

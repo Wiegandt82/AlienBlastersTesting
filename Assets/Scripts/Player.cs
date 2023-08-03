@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,18 +12,20 @@ public class Player : MonoBehaviour
 
     public bool IsGrounded;
 
-    float _jumpEndTime;
     SpriteRenderer _spriteRenderer;
     Animator _animator;
     AudioSource _audioSource;
+    Rigidbody2D _rb;
     float _horizontal;
     int _jumpsRemaining;
+    float _jumpEndTime;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>(); 
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void OnDrawGizmos()
@@ -50,10 +50,8 @@ public class Player : MonoBehaviour
         UpdateGrounding();
 
         _horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(_horizontal);
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        var vertical = rb.velocity.y;
+        var vertical = _rb.velocity.y;
 
         if (Input.GetButtonDown("Fire1") && _jumpsRemaining > 0)
         {
@@ -61,16 +59,15 @@ public class Player : MonoBehaviour
             _jumpsRemaining--;
 
             _audioSource.pitch = _jumpsRemaining > 0 ? 1 : 1.2f;
-
             _audioSource.Play();
         }
 
-        if (Input.GetButtonDown("Fire1") && _jumpEndTime > Time.time)
+        if (Input.GetButton("Fire1") && _jumpEndTime > Time.time)
             vertical = _jumpVelocity;
 
         _horizontal *= _horizontalVelocity;
 
-        rb.velocity = new Vector2(_horizontal, vertical);
+        _rb.velocity = new Vector2(_horizontal, vertical);
 
         UpdateSprite();
     }

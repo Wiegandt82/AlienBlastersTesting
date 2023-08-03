@@ -1592,6 +1592,7 @@ GameObject:
   - component: {fileID: 1805357082}
   - component: {fileID: 1805357081}
   - component: {fileID: 1805357085}
+  - component: {fileID: 1805357086}
   m_Layer: 0
   m_Name: frog
   m_TagString: Untagged
@@ -1753,6 +1754,18 @@ MonoBehaviour:
   _jumpDelay: 3
   _jumpForce: {x: 200, y: 300}
   _jumpSprite: {fileID: 21300000, guid: 122b1f2fe09be5f47a621e77954d79e3, type: 3}
+--- !u!114 &1805357086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805357080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2785b5a658ebc46896c0c7f59783dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886414114
 GameObject:
   m_ObjectHideFlags: 0

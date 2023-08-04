@@ -1023,7 +1023,9 @@ MonoBehaviour:
     m_Bits: 55
   _footOffset: 0.35
   _acceleration: 10
+  _snowAcceleration: 1
   IsGrounded: 0
+  IsOnSnow: 0
 --- !u!95 &694689393
 Animator:
   serializedVersion: 5
@@ -1530,7 +1532,7 @@ GameObject:
   - component: {fileID: 1476956848}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
